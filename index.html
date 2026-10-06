@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Study Cards</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Study Cards</h1>
+      <nav class="tabs" aria-label="Screens">
+        <button type="button" class="tab" data-screen="add-screen" aria-pressed="true">Add cards</button>
+        <button type="button" class="tab" data-screen="review-screen" aria-pressed="false">Review</button>
+      </nav>
+    </header>
+
+    <main>
+      <p id="storage-error" class="banner banner-error" hidden>
+        Your browser is blocking saved data, so cards won't be kept after you close this tab.
+        Try a normal (not private) window.
+      </p>
+
+      <section id="add-screen" class="screen">
+        <h2>Add a flashcard</h2>
+        <form id="add-card-form" novalidate>
+          <label for="course-input">Course</label>
+          <input id="course-input" name="course" list="course-options" placeholder="e.g. CS 124" autocomplete="off" />
+          <datalist id="course-options"></datalist>
+
+          <label for="front-input">Front (question or term)</label>
+          <textarea id="front-input" name="front" rows="3" placeholder="e.g. What does a constructor do?"></textarea>
+
+          <label for="back-input">Back (answer)</label>
+          <textarea id="back-input" name="back" rows="4" placeholder="e.g. Sets up a new object's initial state."></textarea>
+
+          <p id="form-error" class="field-error" role="alert"></p>
+          <button type="submit" class="primary">Save card</button>
+          <p id="form-success" class="success" role="status"></p>
+        </form>
+
+        <h2>Your cards <span id="card-count" class="muted"></span></h2>
+        <p id="card-list-empty" class="muted">No cards yet. Add your first one above.</p>
+        <ul id="card-list" class="card-list"></ul>
+      </section>
+
+      <section id="review-screen" class="screen" hidden>
+        <h2>Review</h2>
+        <div id="review-empty" class="empty-state" hidden>
+          <p>You don't have any cards to review yet.</p>
+          <button type="button" class="primary" data-go="add-screen">Add a card</button>
+        </div>
+
+        <div id="review-active" hidden>
+          <p id="review-progress" class="muted"></p>
+          <article class="flashcard">
+            <p id="review-course" class="flashcard-course"></p>
+            <p id="review-front" class="flashcard-front"></p>
+            <div id="review-back-wrap" hidden>
+              <hr />
+              <p id="review-back" class="flashcard-back"></p>
+            </div>
+          </article>
+          <div class="review-actions">
+            <button type="button" id="show-answer" class="primary">Show answer</button>
+            <button type="button" id="next-card" class="primary" hidden>Next card</button>
+          </div>
+        </div>
+
+        <div id="review-done" class="empty-state" hidden>
+          <p>Nice work, you went through every card.</p>
+          <button type="button" id="review-again" class="primary">Review again</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="cards.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

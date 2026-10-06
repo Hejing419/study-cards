@@ -1,0 +1,224 @@
+:root {
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5f6670;
+  --border: #d8dbe0;
+  --accent: #2f5fd0;
+  --accent-text: #ffffff;
+  --error: #b42318;
+  --success: #1a7f37;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c;
+    --surface: #202329;
+    --text: #e8eaed;
+    --muted: #a0a6b0;
+    --border: #3a3f47;
+    --accent: #7aa2ff;
+    --accent-text: #0f1420;
+    --error: #ff8a80;
+    --success: #6fdc8c;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.app-header,
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+h2 {
+  margin: 28px 0 12px;
+  font-size: 1.2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.tab {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.tab[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.primary {
+  min-height: 44px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.link-button {
+  border: none;
+  background: none;
+  color: var(--error);
+  padding: 4px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+form .primary {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.field-error {
+  margin: 4px 0 0;
+  min-height: 1.5em;
+  color: var(--error);
+}
+
+.success {
+  margin: 4px 0 0;
+  min-height: 1.5em;
+  color: var(--success);
+}
+
+.muted {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.banner-error {
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid var(--error);
+  border-radius: 8px;
+  color: var(--error);
+}
+
+.card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-list li span:nth-child(2) {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.card-list-course {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--border);
+  font-size: 0.85rem;
+}
+
+.flashcard {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.flashcard-course {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.flashcard-front {
+  margin: 0;
+  font-size: 1.3rem;
+  white-space: pre-wrap;
+}
+
+.flashcard-back {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.flashcard hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+.review-actions {
+  margin-top: 16px;
+}
+
+.empty-state {
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+}
